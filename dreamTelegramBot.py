@@ -11,7 +11,7 @@ def sendData(chat_id, bot, response):
     if bot == None:
         return
 
-    bot.sendMessage(chat_id, text)
+    bot.sendMessage(chat_id, response)
 
 def on_callback_query(msg):
     return
