@@ -33,7 +33,7 @@ def on_chosen_inline_result(msg):
     pass
 
 def processCommand(text):
-    return tagsRanking
+    return tagsRanking()
 
 # Main starts here
 token = str(os.environ["telegram_token"])
