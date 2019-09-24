@@ -24,6 +24,8 @@ def on_chat_message(msg):
     else:
         response = "error"
         response = "chat_id: " + str(chat_id) + "\nmyChat_id: " + str(myChat_id)
+        if chat_id != myChat_id:
+            response += "\nThey are not equal!"
 
     sendData(chat_id, bot, response)
 
