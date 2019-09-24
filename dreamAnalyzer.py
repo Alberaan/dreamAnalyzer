@@ -91,4 +91,7 @@ def printByTag(tag):
             textToReturn += "------------------------------------------------------------------\n"
             cont += 1
 
+    if textToReturn == "":
+        textToReturn = "No dreams found with that tag"
+        
     return textToReturn
