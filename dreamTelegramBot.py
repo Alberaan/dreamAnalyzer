@@ -23,10 +23,6 @@ def on_chat_message(msg):
         response = processCommand(msg["text"])
     else:
         response = "error"
-        response = "chat_id: " + str(chat_id) + "\nmyChat_id: " + str(myChat_id)
-        if chat_id != myChat_id:
-            response += str(type(chat_id)) + str(type(myChat_id))
-            response += "\nThey are not equal!"
 
     sendData(chat_id, bot, response)
 
@@ -41,7 +37,7 @@ def processCommand(text):
 
 # Main starts here
 token = str(os.environ["telegram_token"])
-myChat_id = os.environ["telegram_chat_id"]
+myChat_id = int(os.environ["telegram_chat_id"])
 bot = telepot.Bot(token) # Bot is created from the telepot class
 app = Flask(__name__)
 URL = str(os.environ["telegram_url"])
