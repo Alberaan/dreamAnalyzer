@@ -6,10 +6,12 @@ from configparser import SafeConfigParser
 class myNote:
     text = ""
     tags = set()
+    date = ""
 
-    def __init__(self, text, tags):
+    def __init__(self, text, tags, date):
         self.text = text
         self.tags = tags
+        self.date = date
 
 def cleanText(text):
     text = text.lower()
@@ -46,6 +48,7 @@ def getNotes():
 
     for note in gnotes:
         noteText = note.text
+        noteDate = note.node.timestamps.created
         noteTags = set()
         for word in noteText.lower().split():
             if "#" in word:
@@ -53,7 +56,7 @@ def getNotes():
                 if word not in noteTags:
                     noteTags.update([word])
         
-        parsedNote = myNote(noteText, noteTags)
+        parsedNote = myNote(noteText, noteTags, noteDate)
         returnNotes.append(parsedNote)
 
     return returnNotes
@@ -86,7 +89,7 @@ def printByTag(tag):
 
     for note in gnotes:
         if tag in note.tags:
-            textToReturn += "Text in note " + str(cont) + ": " + "\n"
+            textToReturn += "Text in note " + str(cont) + "(" + str(note.Date) + "): " + "\n"
             textToReturn += note.text + "\n"
             textToReturn += "------------------------------------------------------------------\n"
             cont += 1
