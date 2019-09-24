@@ -19,7 +19,7 @@ def on_callback_query(msg):
 #def handle(msg):
 def on_chat_message(msg):
     content_type, chat_type, chat_id = telepot.glance(msg)
-    print("Chat_id: " + chat_id)
+    print("Chat_id: " + str(chat_id))
     if content_type == 'text' :
         response = processCommand(msg["text"])
     else:
