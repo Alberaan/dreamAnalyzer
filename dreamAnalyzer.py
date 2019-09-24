@@ -91,7 +91,7 @@ def printByTag(tag):
 
     for note in gnotes:
         if tag in note.tags:
-            textToReturn += "(" + str(note.date.strftime("%d-%B-%Y")) + ") Text in note " + str(cont) + ": \n"
+            textToReturn += "(" + str(note.date.strftime("%d-%m-%Y")) + ") Text in note " + str(cont) + ": \n"
             textToReturn += note.text + "\n"
             textToReturn += "------------------------------------------------------------------\n"
             cont += 1
