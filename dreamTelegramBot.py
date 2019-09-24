@@ -23,7 +23,7 @@ def on_chat_message(msg):
         response = processCommand(msg["text"])
     else:
         response = "error"
-        response = "chat_id: " + chat_id + "\nmyChat_id: " + myChat_id
+        response = "chat_id: " + str(chat_id) + "\nmyChat_id: " + str(myChat_id)
 
     sendData(chat_id, bot, response)
 
