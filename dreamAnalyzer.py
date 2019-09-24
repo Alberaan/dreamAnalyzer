@@ -37,7 +37,6 @@ def readConfig():
 
 def getNotes():
     user, password = readConfig()
-    print("User: " + user + "\npassword: " + password)
     keep = gkeepapi.Keep()
     success = keep.login(user, password)
     returnNotes = []
