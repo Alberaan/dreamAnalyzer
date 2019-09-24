@@ -11,9 +11,6 @@ def sendData(chat_id, bot, response):
     if bot == None:
         return
 
-    if isinstance(response, botresponse) == False:
-        return
-
     bot.sendMessage(chat_id, text)
 
 def on_callback_query(msg):
