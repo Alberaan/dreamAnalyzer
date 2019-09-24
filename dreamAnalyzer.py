@@ -48,7 +48,7 @@ def getNotes():
 
     for note in gnotes:
         noteText = note.text
-        noteDate = note.node.timestamps.created
+        noteDate = note.timestamps.created
         noteTags = set()
         for word in noteText.lower().split():
             if "#" in word:
