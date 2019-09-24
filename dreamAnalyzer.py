@@ -61,11 +61,17 @@ def getNotes():
 
     return returnNotes
 
-def tagsRanking():
+def tagsRanking(text):
+    repetitions = 1
+    if len(text.split(" ")) > 2:
+        return "Available commands:\nRanking: prints occurrences of repeated dream tags\nSearch [tag]: searches all dreams with the provided tag"
+    if len(text.split(" ")) == 2:
+        if is_number(text.split(" ")[1]):
+            repetitions = int(text.split(" ")[1])
+        
     gnotes = getNotes()
     tags = {}
     textToReturn = ""
-    repetitions = 1
 
     for nota in gnotes:
         for word in nota.tags:
