@@ -65,6 +65,7 @@ def tagsRanking():
     gnotes = getNotes()
     tags = {}
     textToReturn = ""
+    repetitions = 1
 
     for nota in gnotes:
         for word in nota.tags:
@@ -75,8 +76,9 @@ def tagsRanking():
     
     sorted_d = sorted(tags.items(), key=lambda x: x[1])
     
+    
     for element in sorted_d:
-        if element[1] > 1:
+        if element[1] > repetitions:
             textToReturn += element[0] + ": " + str(element[1]) + "\n"
 
     return textToReturn
