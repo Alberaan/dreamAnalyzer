@@ -33,7 +33,7 @@ def on_chosen_inline_result(msg):
     pass
 
 def processCommand(text):
-    if len(text.split(" ") == 1 and text == "Ranking":
+    if len(text.split(" ")) == 1 and text == "Ranking":
         return tagsRanking()
     elif len(text.split(" ")) == 2 and text.split(" ")[0] == "Search":
         return printByTag(text.split(" ")[1])
