@@ -66,7 +66,7 @@ def tagsRanking(text):
     if len(text.split(" ")) > 2:
         return "Available commands:\nRanking: prints occurrences of repeated dream tags\nSearch [tag]: searches all dreams with the provided tag"
     if len(text.split(" ")) == 2:
-        if is_number(text.split(" ")[1]):
+        if text.split(" ")[1].isdigit():
             repetitions = int(text.split(" ")[1])
         
     gnotes = getNotes()
