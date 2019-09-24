@@ -19,7 +19,6 @@ def on_callback_query(msg):
 #def handle(msg):
 def on_chat_message(msg):
     content_type, chat_type, chat_id = telepot.glance(msg)
-    print("Chat_id: " + str(chat_id))
     if content_type == 'text' and chat_id == myChat_id:
         response = processCommand(msg["text"])
     else:
@@ -34,7 +33,7 @@ def on_chosen_inline_result(msg):
     pass
 
 def processCommand(text):
-    return "ok"
+    return tagsRanking
 
 # Main starts here
 token = str(os.environ["telegram_token"])

@@ -58,7 +58,7 @@ def getNotes():
 
     return returnNotes
 
-def tagsRaking(gnotes):
+def tagsRanking():
     gnotes = getNotes()
     tags = {}
     textToReturn = ""
