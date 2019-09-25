@@ -142,13 +142,13 @@ def notesByDate(text):
             if note.date.day != int(text.split(" ")[3]):
                 toReturn = False
         if toReturn == True:
-            notesToReturn.append(note.id)
+            notesToReturn.append(note)
         
         toReturn = True
         
     textToReturn = "Number of notes in that period: " + str(len(notesToReturn)) + "\n"
-    for line in notesToReturn:
-        textToReturn += "<id>"+ line + "</id>\n"
+    for note in notesToReturn:
+        textToReturn += "<id>"+ note.id + "</id>\n"
     
     if numberOfParameters == 0:
         for note in notesToReturn:
@@ -176,6 +176,7 @@ def notesByDate(text):
             
     if textToReturn == "":
         return "No dreams found on that date"
+    
     return textToReturn
     
 def printByTag(text):
