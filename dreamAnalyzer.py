@@ -1,7 +1,5 @@
 import os
 import gkeepapi
-from configparser import SafeConfigParser
-
 
 class myNote:
     text = ""
