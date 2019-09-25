@@ -156,7 +156,7 @@ def notesByDate(text):
                 yearsToReturn.append(str(note.date.year))
         textToReturn += "Years with dreams: \n"
         for year in yearsToReturn:
-            textToReturn += "<button>" + year + "</button>\n"
+            textToReturn += "<date>" + year + "</date>\n"
     
     if numberOfParameters == 1:
         for note in notesToReturn:
@@ -164,7 +164,7 @@ def notesByDate(text):
                 monthsToReturn.append(str(note.date.year) + " " + str(note.date.month))
         textToReturn += "Months with dreams: \n"
         for month in monthsToReturn:
-            textToReturn += "<button>" + month + "</button>\n"
+            textToReturn += "<date>" + month + "</date>\n"
     
     if numberOfParameters == 2:
         for note in notesToReturn:
@@ -172,7 +172,7 @@ def notesByDate(text):
                 daysToReturn.append(str(note.date.year) + " " + str(note.date.month) + " " + str(note.date.day))
         textToReturn += "Days with dreams: \n"
         for day in daysToReturn:
-            textToReturn += "<button>" + day + "</button>\n"
+            textToReturn += "<date>" + day + "</date>\n"
             
     if textToReturn == "":
         return "No dreams found on that date"
