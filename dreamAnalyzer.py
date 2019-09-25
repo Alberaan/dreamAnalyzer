@@ -134,7 +134,7 @@ def notesByDate(text):
         toReturn = True
         if numberOfParameters == 0:
             if note.date.year not in yearsToReturn:
-                uearsToReturn.append(note.date.year)
+                yearsToReturn.append(note.date.year)
         if numberOfParameters >= 1:
             if note.date.year != int(text.split(" ")[1]):
                 if note.date.month not in monthsToReturn:
