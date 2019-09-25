@@ -124,9 +124,6 @@ def notesByDate(text):
     gnotes = getNotes()
     numberOfParameters = len(text.split(" ")[1:])
     notesToReturn = []
-    yearsToReturn = []
-    monthsToReturn = []
-    daysToReturn = []
     
     for note in gnotes:
         toReturn = True
@@ -150,6 +147,7 @@ def notesByDate(text):
         textToReturn += "<id>"+ note.id + "</id>\n"
     
     if numberOfParameters == 0:
+        yearsToReturn = []
         for note in notesToReturn:
             if str(note.date.year) not in yearsToReturn:
                 yearsToReturn.append(str(note.date.year))
@@ -157,6 +155,7 @@ def notesByDate(text):
             textToReturn += "<date>" + year + "</date>\n"
     
     if numberOfParameters == 1:
+        monthsToReturn = []
         for note in notesToReturn:
             if str(note.date.month) not in monthsToReturn:
                 monthsToReturn.append(str(note.date.year) + "-" + str(note.date.month) + "-x")
@@ -164,6 +163,7 @@ def notesByDate(text):
             textToReturn += "<date>" + month + "</date>\n"
     
     if numberOfParameters == 2:
+        daysToReturn = []
         for note in notesToReturn:
             if str(note.date.day) not in daysToReturn:
                 daysToReturn.append(str(note.date.year) + "-" + str(note.date.month) + "-" + str(note.date.day))
