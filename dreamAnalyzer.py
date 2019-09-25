@@ -35,9 +35,9 @@ def cleanText(text):
 def printHelp():
     textToReturn = "Available commands:\n"
     textToReturn += "Ranking [min]: prints occurrences of repeated dream tags. If min is provided, only prints notes tags with min number of occurrences\n"
-    textToReturn += "Filter [list of tags]: searches all dreams that have the provided tags"
-    textToReturn += "Read [ID]: prints the note with the provided ID"
-    textToReturn += "Date [year] [month] [day]: lists dreams in that year, year+month, year+month+day"
+    textToReturn += "Filter [list of tags]: searches all dreams that have the provided tags\n"
+    textToReturn += "Read [ID]: prints the note with the provided ID\n"
+    textToReturn += "Date [year] [month] [day]: lists dreams in that year, year+month, year+month+day\n"
     return textToReturn    
     
 def readConfig():
@@ -131,13 +131,13 @@ def notesByDate(text):
     toReturn = True
     for note in gnotes:
         if numberOfParameters >= 1:
-            if note.timestamps.created.year != text.split(" ")[1]:
+            if note.date.year != text.split(" ")[1]:
                 toReturn = False
         if numberOfParameters >= 2:
-            if note.timestamps.created.month == text.split(" ")[2]:
+            if note.date.month == text.split(" ")[2]:
                 toReturn = False
         if numberOfParameters == 3:
-            if note.timestamps.created.day == text.split(" ")[3]:
+            if note.date.day == text.split(" ")[3]:
                 toReturn = False
         if toReturn == True:
             notesToReturn.append(note.id)
