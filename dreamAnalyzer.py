@@ -131,13 +131,13 @@ def notesByDate(text):
     toReturn = True
     for note in gnotes:
         if numberOfParameters >= 1:
-            if note.date.year != text.split(" ")[1]:
+            if note.date.year != int(text.split(" ")[1]):
                 toReturn = False
         if numberOfParameters >= 2:
-            if note.date.month == text.split(" ")[2]:
+            if note.date.month == int(text.split(" ")[2]):
                 toReturn = False
         if numberOfParameters == 3:
-            if note.date.day == text.split(" ")[3]:
+            if note.date.day == int(text.split(" ")[3]):
                 toReturn = False
         if toReturn == True:
             notesToReturn.append(note.id)
