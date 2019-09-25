@@ -89,18 +89,24 @@ def tagsRanking(text):
 
     return textToReturn
 
-def printByTag(tag):
+def printByTag(text):
+    textCleaned = cleanText(tag)
+    tags = textCleaned.split(" ")[1:]
     gnotes = getNotes()
-    tag = cleanText(tag)
     cont = 1
     textToReturn = ""
+    returnThisNote = True
 
     for note in gnotes:
-        if tag in note.tags:
+        for tag in tags:
+            if tag not in note.tags:
+                returnThisNote = False
+        if returnThisNote == True:
             textToReturn += "(" + str(note.date.strftime("%d-%m-%Y")) + ") Note " + str(cont) + ": \n"
             textToReturn += note.text + "\n"
             textToReturn += "------------------------------------------------------------------\n"
             cont += 1
+            returnThisNote = True
 
     if textToReturn == "":
         textToReturn = "No dreams found with that tag"
