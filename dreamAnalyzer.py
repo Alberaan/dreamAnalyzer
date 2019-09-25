@@ -135,12 +135,10 @@ def notesByDate(text):
             if note.date.year != int(text.split(" ")[1]):
                 toReturn = False
         if numberOfParameters >= 2:
-            print("Before the if: " + text.split(" ")[2] + " vs " + str(note.date.month))
-            if note.date.month == int(text.split(" ")[2]):
-                print("Inside the if")
+            if note.date.month != int(text.split(" ")[2]):
                 toReturn = False
         if numberOfParameters == 3:
-            if note.date.day == int(text.split(" ")[3]):
+            if note.date.day != int(text.split(" ")[3]):
                 toReturn = False
         if toReturn == True:
             notesToReturn.append(note.id)
