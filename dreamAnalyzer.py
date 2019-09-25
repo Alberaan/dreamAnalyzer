@@ -96,9 +96,9 @@ def printByTag(text):
     gnotes = getNotes()
     cont = 1
     textToReturn = ""
-    returnThisNote = True
 
     for note in gnotes:
+        returnThisNote = True
         for tag in tags:
             if tag not in note.tags:
                 returnThisNote = False
@@ -107,7 +107,6 @@ def printByTag(text):
             textToReturn += note.text + "\n"
             textToReturn += "------------------------------------------------------------------\n"
             cont += 1
-            returnThisNote = True
 
     if textToReturn == "":
         textToReturn = "No dreams found with that tag"
