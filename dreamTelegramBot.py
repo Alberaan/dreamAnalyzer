@@ -35,7 +35,7 @@ def on_chosen_inline_result(msg):
 def processCommand(text):
     if text.split(" ")[0] == "Ranking":
         return tagsRanking(text)        
-    elif text.split(" ")[0] == "Search":
+    elif text.split(" ")[0] == "Filter":
         return printByTag(text)
     else:
         return "Available commands:\nRanking: prints occurrences of repeated dream tags\nFilter [list of tags]: searches all dreams that have the provided tags"
