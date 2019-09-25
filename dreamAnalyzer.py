@@ -90,6 +90,9 @@ def tagsRanking(text):
     return textToReturn
 
 def printByTag(text):
+    if len(text.split(" ")) <= 1:
+        return "Please provide at least one tag"
+    
     textCleaned = cleanText(text)
     tags = textCleaned.split(" ")[1:]
     gnotes = getNotes()
