@@ -159,7 +159,7 @@ def notesByDate(text):
     if numberOfParameters == 1:
         for note in notesToReturn:
             if str(note.date.month) not in monthsToReturn:
-                monthsToReturn.append(str(note.date.year) + "-" + str(note.date.month))
+                monthsToReturn.append(str(note.date.year) + "-" + str(note.date.month) + "-x")
         for month in monthsToReturn:
             textToReturn += "<date>" + month + "</date>\n"
     
