@@ -35,10 +35,10 @@ def on_chosen_inline_result(msg):
 def processCommand(text):
     if text.split(" ")[0] == "Ranking":
         return tagsRanking(text)        
-    elif len(text.split(" ")) == 2 and text.split(" ")[0] == "Search":
-        return printByTag(text.split(" ")[1])
+    elif text.split(" ")[0] == "Search":
+        return printByTag(text)
     else:
-        return "Available commands:\nRanking: prints occurrences of repeated dream tags\nSearch [tag]: searches all dreams with the provided tag"
+        return "Available commands:\nRanking: prints occurrences of repeated dream tags\nFilter [list of tags]: searches all dreams that have the provided tags"
 
 # Main starts here
 token = str(os.environ["telegram_token"])
