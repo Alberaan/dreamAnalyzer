@@ -32,6 +32,14 @@ def cleanText(text):
 
     return text
 
+def printHelp():
+    textToReturn = "Available commands:\n"
+    textToReturn = "Ranking [min]: prints occurrences of repeated dream tags. If min is provided, only prints notes tags with min number of occurrences\n"
+    textToReturn = "Filter [list of tags]: searches all dreams that have the provided tags"
+    textToReturn = "Read [ID]: prints the note with the provided ID"
+    textToReturn = "Date [year] [month] [day]: lists dreams in that year, year+month, year+month+day"
+    return textToReturn    
+    
 def readConfig():
     # Read environ variables
     user = str(os.environ["user"])
@@ -67,7 +75,7 @@ def getNotes():
 def tagsRanking(text):
     repetitions = 1
     if len(text.split(" ")) > 2:
-        return "Available commands:\nRanking: prints occurrences of repeated dream tags\nSearch [tag]: searches all dreams with the provided tag"
+        return printHelp()
     if len(text.split(" ")) == 2:
         if text.split(" ")[1].isdigit():
             repetitions = int(text.split(" ")[1])
@@ -94,7 +102,7 @@ def tagsRanking(text):
 
 def printById(text):
     if len(text.split(" ")) != 2:
-        return "Please provide Read + ID"
+        return printHelp()
     id = text.split(" ")[1]
     gnotes = getNotes()
     textToReturn = ""
@@ -106,11 +114,45 @@ def printById(text):
             textToReturn += "[ID: " + note.id + "]\n"
             textToReturn += "------------------------------------------------------------------\n"
             return textToReturn
-    return "Note not found"
+    return "No dreams where found with that ID"
             
+def notesByDate(year):
+    if len(text.split(" ")) < 2:
+        return printHelp()
+    if len(text.split(" ")) > 4:
+        return printHelp()
+    for parameter in text.split(" ")[1:]:
+        if parameter.isdigit() != True:
+            return printHelp()
+    
+    gnotes = getNotes()
+    numberOfParameters = len(text.split(" ")[1:])
+    notesToReturn = []
+    toReturn = True
+    for note in gnotes:
+        if numberOfParameters >= 1:
+            if note.timestamps.created.year != text.split(" ")[1]:
+                toReturn = False
+        if numberOfParameters >= 2:
+            if note.timestamps.created.month == text.split(" ")[2]:
+                toReturn = False
+        if numberOfParameters == 3:
+            if note.timestamps.created.day == text.split(" ")[3]:
+                toReturn = False
+        if toReturn == True:
+            notesToReturn.append(note.id)
+        
+        toReturn = True
+        
+    textToReturn = "Number of notes in that period: " + str(len(toReturn)) + "\n"
+    for line in notesToReturn:
+        textToReturn += line + "\n"
+        
+    return textToReturn
+    
 def printByTag(text):
     if len(text.split(" ")) <= 1:
-        return "Please provide at least one tag"
+        return printHelp()
     
     textCleaned = cleanText(text)
     tags = textCleaned.split(" ")[1:]
