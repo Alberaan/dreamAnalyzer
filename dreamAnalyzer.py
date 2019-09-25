@@ -145,6 +145,7 @@ def notesByDate(text):
         toReturn = True
         
     textToReturn = "Number of notes in that period: " + str(len(notesToReturn)) + "\n"
+    
     for note in notesToReturn:
         textToReturn += "<id>"+ note.id + "</id>\n"
     
@@ -158,16 +159,14 @@ def notesByDate(text):
     if numberOfParameters == 1:
         for note in notesToReturn:
             if str(note.date.month) not in monthsToReturn:
-                monthsToReturn.append(str(note.date.year) + " " + str(note.date.month))
-        textToReturn += "Months with dreams: \n"
+                monthsToReturn.append(str(note.date.year) + "-" + str(note.date.month))
         for month in monthsToReturn:
             textToReturn += "<date>" + month + "</date>\n"
     
     if numberOfParameters == 2:
         for note in notesToReturn:
             if str(note.date.day) not in daysToReturn:
-                daysToReturn.append(str(note.date.year) + " " + str(note.date.month) + " " + str(note.date.day))
-        textToReturn += "Days with dreams: \n"
+                daysToReturn.append(str(note.date.year) + "-" + str(note.date.month) + "-" + str(note.date.day))
         for day in daysToReturn:
             textToReturn += "<date>" + day + "</date>\n"
             
