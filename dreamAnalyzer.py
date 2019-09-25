@@ -132,18 +132,11 @@ def notesByDate(text):
     
     for note in gnotes:
         toReturn = True
-        if numberOfParameters == 0:
-            if note.date.year not in yearsToReturn:
-                yearsToReturn.append(note.date.year)
         if numberOfParameters >= 1:
             if note.date.year != int(text.split(" ")[1]):
-                if note.date.month not in monthsToReturn:
-                    monthsToReturn.append(note.date.month)
                 toReturn = False
         if numberOfParameters >= 2:
             if note.date.month != int(text.split(" ")[2]):
-                if note.date.day not in daysToReturn:
-                    daysToReturn.append(note.date.day)
                 toReturn = False
         if numberOfParameters == 3:
             if note.date.day != int(text.split(" ")[3]):
@@ -158,14 +151,26 @@ def notesByDate(text):
         textToReturn += "<id>"+ line + "</id>\n"
     
     if numberOfParameters == 0:
+        for note in gnotes:
+            if str(note.date.year) not in yearsToReturn:
+                monthsToReturn.append(str(note.date.month))
+        textToReturn += "Years with dreams: \n"
         for year in yearsToReturn:
             textToReturn += "<year>" + str(year) + "</year>\n"
     
     if numberOfParameters == 1:
+        for note in gnotes:
+            if str(note.date.month) not in monthsToReturn:
+                monthsToReturn.append(str(note.date.month))
+        textToReturn += "Months with dreams: \n"
         for month in monthsToReturn:
             textToReturn += "<month>" + str(month) + "</month>\n"
     
     if numberOfParameters == 2:
+        for note in gnotes:
+            if str(note.date.day) not in daysToReturn:
+                daysToReturn.append(str(note.date.day))
+        textToReturn += "Days with dreams: \n"
         for day in daysToReturn:
             textToReturn += "<day>" + str(day) + "</day>\n"
             
