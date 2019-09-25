@@ -117,8 +117,6 @@ def printById(text):
     return "No dreams where found with that ID"
             
 def notesByDate(text):
-    if len(text.split(" ")) < 2:
-        return printHelp()
     if len(text.split(" ")) > 4:
         return printHelp()
     for parameter in text.split(" ")[1:]:
@@ -128,14 +126,24 @@ def notesByDate(text):
     gnotes = getNotes()
     numberOfParameters = len(text.split(" ")[1:])
     notesToReturn = []
+    yearsToReturn = []
+    monthsToReturn = []
+    daysToReturn = []
     
     for note in gnotes:
         toReturn = True
+        if numberOfParameters == 0:
+            if note.date.year not in yearsToReturn:
+                uearsToReturn.append(note.date.year)
         if numberOfParameters >= 1:
             if note.date.year != int(text.split(" ")[1]):
+                if note.date.month not in monthsToReturn:
+                    monthsToReturn.append(note.date.month)
                 toReturn = False
         if numberOfParameters >= 2:
             if note.date.month != int(text.split(" ")[2]):
+                if note.date.day not in daysToReturn:
+                    daysToReturn.append(note.date.day)
                 toReturn = False
         if numberOfParameters == 3:
             if note.date.day != int(text.split(" ")[3]):
@@ -147,8 +155,20 @@ def notesByDate(text):
         
     textToReturn = "Number of notes in that period: " + str(len(notesToReturn)) + "\n"
     for line in notesToReturn:
-        textToReturn += line + "\n"
-        
+        textToReturn += "<id>"+ line + "</id>\n"
+    
+    if numberOfParameters == 0:
+        for year in yearsToReturn:
+            textToReturn += "<year>" + str(year) + "</year>\n"
+    
+    if numberOfParameters == 1:
+        for month in monthsToReturn:
+            textToReturn += "<month>" + str(month) + "</month>\n"
+    
+    if numberOfParameters == 2:
+        for day in daysToReturn:
+            textToReturn += "<day>" + str(day) + "</day>\n"
+            
     if textToReturn == "":
         return "No dreams found on that date"
     return textToReturn
