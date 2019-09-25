@@ -40,7 +40,7 @@ def processCommand(text):
     elif text.split(" ")[0] == "Read":
         return printById(text)
     else:
-        return "Available commands:\nRanking: prints occurrences of repeated dream tags\nFilter [list of tags]: searches all dreams that have the provided tags"
+        return printHelp()
 
 # Main starts here
 token = str(os.environ["telegram_token"])
