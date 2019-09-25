@@ -42,7 +42,7 @@ def sendData(chat_id, bot, response):
             textToSend += line + "\n"
     
     keyboard = InlineKeyboardMarkup(inline_keyboard=my_keyboard)
-    bot.sendMessage(chat_id, response, reply_markup=keyboard)
+    bot.sendMessage(chat_id, textToSend, reply_markup=keyboard)
 
 def on_callback_query(msg):
     return
