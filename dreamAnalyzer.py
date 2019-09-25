@@ -128,8 +128,9 @@ def notesByDate(text):
     gnotes = getNotes()
     numberOfParameters = len(text.split(" ")[1:])
     notesToReturn = []
-    toReturn = True
+    
     for note in gnotes:
+        toReturn = True
         if numberOfParameters >= 1:
             if note.date.year != int(text.split(" ")[1]):
                 toReturn = False
