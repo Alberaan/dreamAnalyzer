@@ -149,24 +149,27 @@ def notesByDate(text):
     if numberOfParameters == 0:
         yearsToReturn = []
         for note in notesToReturn:
-            if str(note.date.year) not in yearsToReturn:
-                yearsToReturn.append(str(note.date.year))
+            buttonText = str(note.date.year)
+            if buttonText not in yearsToReturn:
+                yearsToReturn.append(buttonText)
         for year in yearsToReturn:
             textToReturn += "<date>" + year + "</date>\n"
     
     if numberOfParameters == 1:
         monthsToReturn = []
         for note in notesToReturn:
-            if str(note.date.month) not in monthsToReturn:
-                monthsToReturn.append(str(note.date.year) + "-" + str(note.date.month) + "-x")
+            buttonText = str(note.date.year) + "-" + str(note.date.month) + "-x"
+            if buttonText not in monthsToReturn:
+                monthsToReturn.append(buttonText)
         for month in monthsToReturn:
             textToReturn += "<date>" + month + "</date>\n"
     
     if numberOfParameters == 2:
         daysToReturn = []
         for note in notesToReturn:
-            if str(note.date.day) not in daysToReturn:
-                daysToReturn.append(str(note.date.year) + "-" + str(note.date.month) + "-" + str(note.date.day))
+            buttonText = str(note.date.year) + "-" + str(note.date.month) + "-" + str(note.date.day)
+            if buttonText not in daysToReturn:
+                daysToReturn.append(buttonText)
         for day in daysToReturn:
             textToReturn += "<date>" + day + "</date>\n"
             
