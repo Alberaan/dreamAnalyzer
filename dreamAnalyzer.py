@@ -7,9 +7,11 @@ class myNote:
     text = ""
     tags = set()
     date = ""
+    id = ""
 
-    def __init__(self, text, tags, date):
+    def __init__(self, id, text, tags, date):
         self.text = text
+        self.id = id
         self.tags = tags
         self.date = date
 
@@ -47,6 +49,7 @@ def getNotes():
     gnotes = keep.find(labels=[keep.findLabel('Sueño')])
 
     for note in gnotes:
+        noteId = note.id
         noteText = note.text
         noteDate = note.timestamps.created
         noteTags = set()
@@ -56,7 +59,7 @@ def getNotes():
                 if word not in noteTags:
                     noteTags.update([word])
         
-        parsedNote = myNote(noteText, noteTags, noteDate)
+        parsedNote = myNote(noteId, noteText, noteTags, noteDate)
         returnNotes.append(parsedNote)
 
     return returnNotes
@@ -107,6 +110,7 @@ def printByTag(text):
         if returnThisNote == True:
             textToReturn += "(" + str(note.date.strftime("%d-%m-%Y")) + ") Note " + str(cont) + ": \n"
             textToReturn += note.text + "\n"
+            textToReturn += "[ID: " + note.id + "]\n"
             textToReturn += "------------------------------------------------------------------\n"
             cont += 1
 
