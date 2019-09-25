@@ -144,7 +144,7 @@ def notesByDate(text):
         
         toReturn = True
         
-    textToReturn = "Number of notes in that period: " + str(len(toReturn)) + "\n"
+    textToReturn = "Number of notes in that period: " + str(len(notesToReturn)) + "\n"
     for line in notesToReturn:
         textToReturn += line + "\n"
         
