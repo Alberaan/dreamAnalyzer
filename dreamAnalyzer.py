@@ -106,7 +106,7 @@ def printById(text):
             textToReturn += "[ID: " + note.id + "]\n"
             textToReturn += "------------------------------------------------------------------\n"
             return textToReturn
-       return "Note not found"
+    return "Note not found"
             
 def printByTag(text):
     if len(text.split(" ")) <= 1:
