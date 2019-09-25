@@ -133,6 +133,7 @@ def notesByDate(text):
         toReturn = True
         if numberOfParameters >= 1:
             if note.date.year != int(text.split(" ")[1]):
+                print(text.split(" ")[1])
                 toReturn = False
         if numberOfParameters >= 2:
             if note.date.month == int(text.split(" ")[2]):
