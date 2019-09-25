@@ -90,7 +90,7 @@ def tagsRanking(text):
     return textToReturn
 
 def printByTag(text):
-    textCleaned = cleanText(tag)
+    textCleaned = cleanText(text)
     tags = textCleaned.split(" ")[1:]
     gnotes = getNotes()
     cont = 1
