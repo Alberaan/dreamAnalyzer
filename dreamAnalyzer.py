@@ -120,7 +120,6 @@ def notesByDate(text):
     if len(text.split(" ")) < 2:
         return printHelp()
     if len(text.split(" ")) > 4:
-        print("Too many arguments")
         return printHelp()
     for parameter in text.split(" ")[1:]:
         if parameter.isdigit() != True:
