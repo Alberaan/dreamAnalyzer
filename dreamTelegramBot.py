@@ -6,12 +6,43 @@ import argparse
 from flask import Flask, request
 from telepot.loop import OrderedWebhook
 from dreamAnalyzer import *
+import re
 
+def renderID(my_keyboard, line):
+    if len(line) <1:
+        return
+    
+    result = re.findall(r'^<id>(.*)<\/id>$')[0]
+    my_keyboard.append([InlineKeyboardButton(text=result, callback_data="Read " + result)])
+    
+    return my_keyboard
+
+def renderDate(my_keyboard, line):
+    if len(line) <1:
+        return
+    
+    result = re.findall(r'^<date>(.*)<\/date>$')[0]
+    my_keyboard.append([InlineKeyboardButton(text=result, callback_data="Date " + result)])
+    
+    return my_keyboard
+    
 def sendData(chat_id, bot, response):
     if bot == None:
         return
-
-    bot.sendMessage(chat_id, response)
+    
+    my_keyboard = []
+    textToSend = ""
+    
+    for line in response.split("\n"):
+        if ("<id>" in line) and ("</id>" in line):
+            my_keyboard = renderID(my_keyboard, line)
+        elif ("<date>" in line) and ("</date>" in line):
+            my_keyboard = renderDate(my_keyboard, line)
+        else:
+            textToSend += line + "\n"
+    
+    keyboard = InlineKeyboardMarkup(inline_keyboard=my_keyboard)
+    bot.sendMessage(chat_id, response, reply_markup=keyboard)
 
 def on_callback_query(msg):
     return
