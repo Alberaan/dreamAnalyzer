@@ -92,6 +92,22 @@ def tagsRanking(text):
 
     return textToReturn
 
+def printById(text):
+    if len(text.split(" ")) != 2:
+        return "Please provide Read + ID"
+    id = text.split(" ")[1]
+    gnotes = getNotes()
+    textToReturn = ""
+    
+    for note in gnotes:
+        if note.id == id:
+            textToReturn += "(" + str(note.date.strftime("%d-%m-%Y")) + ")\n"
+            textToReturn += note.text + "\n"
+            textToReturn += "[ID: " + note.id + "]\n"
+            textToReturn += "------------------------------------------------------------------\n"
+            return textToReturn
+       return "Note not found"
+            
 def printByTag(text):
     if len(text.split(" ")) <= 1:
         return "Please provide at least one tag"
