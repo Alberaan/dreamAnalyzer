@@ -12,7 +12,7 @@ def renderID(my_keyboard, line):
     if len(line) <1:
         return
     
-    result = re.findall(r'^<id>(.*)<\/id>$')[0]
+    result = re.findall(r'^<id>(.*)<\/id>$', line)[0]
     my_keyboard.append([InlineKeyboardButton(text=result, callback_data="Read " + result)])
     
     return my_keyboard
@@ -21,7 +21,7 @@ def renderDate(my_keyboard, line):
     if len(line) <1:
         return
     
-    result = re.findall(r'^<date>(.*)<\/date>$')[0]
+    result = re.findall(r'^<date>(.*)<\/date>$', line)[0]
     my_keyboard.append([InlineKeyboardButton(text=result, callback_data="Date " + result)])
     
     return my_keyboard
