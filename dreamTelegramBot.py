@@ -45,7 +45,10 @@ def sendData(chat_id, bot, response):
     bot.sendMessage(chat_id, textToSend, reply_markup=keyboard)
 
 def on_callback_query(msg):
-    return
+    query_id, from_id, query_data = telepot.glance(msg, flavor='callback_query')
+    response = processCommand(query_data)
+    #print('Callback Query:', query_id, from_id, query_data)
+    sendData(from_id, bot, response)
 
 #def handle(msg):
 def on_chat_message(msg):
