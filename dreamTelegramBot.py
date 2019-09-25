@@ -39,6 +39,8 @@ def processCommand(text):
         return printByTag(text)
     elif text.split(" ")[0] == "Read":
         return printById(text)
+    elif text.split(" ")[0] == "Date":
+        return notesByDate(text)
     else:
         return printHelp()
 
