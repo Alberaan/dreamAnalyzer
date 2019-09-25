@@ -84,7 +84,7 @@ def tagsRanking(text):
     
     
     for element in sorted_d:
-        if element[1] > repetitions:
+        if element[1] >= repetitions:
             textToReturn += element[0] + ": " + str(element[1]) + "\n"
 
     return textToReturn
@@ -92,7 +92,6 @@ def tagsRanking(text):
 def printByTag(text):
     textCleaned = cleanText(text)
     tags = textCleaned.split(" ")[1:]
-    print(tags)
     gnotes = getNotes()
     cont = 1
     textToReturn = ""
