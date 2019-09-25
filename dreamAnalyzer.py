@@ -34,10 +34,10 @@ def cleanText(text):
 
 def printHelp():
     textToReturn = "Available commands:\n"
-    textToReturn = "Ranking [min]: prints occurrences of repeated dream tags. If min is provided, only prints notes tags with min number of occurrences\n"
-    textToReturn = "Filter [list of tags]: searches all dreams that have the provided tags"
-    textToReturn = "Read [ID]: prints the note with the provided ID"
-    textToReturn = "Date [year] [month] [day]: lists dreams in that year, year+month, year+month+day"
+    textToReturn += "Ranking [min]: prints occurrences of repeated dream tags. If min is provided, only prints notes tags with min number of occurrences\n"
+    textToReturn += "Filter [list of tags]: searches all dreams that have the provided tags"
+    textToReturn += "Read [ID]: prints the note with the provided ID"
+    textToReturn += "Date [year] [month] [day]: lists dreams in that year, year+month, year+month+day"
     return textToReturn    
     
 def readConfig():
@@ -116,7 +116,7 @@ def printById(text):
             return textToReturn
     return "No dreams where found with that ID"
             
-def notesByDate(year):
+def notesByDate(text):
     if len(text.split(" ")) < 2:
         return printHelp()
     if len(text.split(" ")) > 4:
