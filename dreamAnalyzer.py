@@ -132,6 +132,7 @@ def notesByDate(text):
     for note in gnotes:
         toReturn = True
         if numberOfParameters >= 1:
+            print("Before the if: " + text.split(" ")[1])
             if note.date.year != int(text.split(" ")[1]):
                 print(text.split(" ")[1])
                 toReturn = False
