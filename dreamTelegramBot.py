@@ -13,7 +13,7 @@ def renderID(my_keyboard, line):
         return
     
     result = re.findall(r'^<id>(.*)<\/id>$', line)[0]
-    my_keyboard.append([InlineKeyboardButton(text="View dream: " + result, callback_data="Read " + result)])
+    my_keyboard.append([InlineKeyboardButton(text="View dream: " + result, callback_data="read " + result)])
     
     return my_keyboard
 
@@ -23,7 +23,7 @@ def renderDate(my_keyboard, line):
     
     result = re.findall(r'^<date>(.*)<\/date>$', line)[0]
     
-    my_keyboard.append([InlineKeyboardButton(text="View dreams in " + result, callback_data="Date " + result)])
+    my_keyboard.append([InlineKeyboardButton(text="View dreams in " + result, callback_data="date " + result)])
     
     return my_keyboard
     
@@ -68,13 +68,14 @@ def on_chosen_inline_result(msg):
     pass
 
 def processCommand(text):
-    if text.split(" ")[0] == "/ranking" or text.split(" ")[0] == "ranking":
+    command = text.split(" ")[0].lower()
+    if command == "/ranking" or command == "ranking":
         return tagsRanking(text)        
-    elif text.split(" ")[0] == "/filter" or text.split(" ")[0] == "filter":
+    elif command == "/filter" or command == "filter":
         return printByTag(text)
-    elif text.split(" ")[0] == "/read" or text.split(" ")[0] == "read":
+    elif command == "/read" or command == "read":
         return printById(text)
-    elif text.split(" ")[0] == "/date" or text.split(" ")[0] == "date":
+    elif text.split(" ")[0].lower() == "/date" or text.split(" ")[0].lower() == "date":
         return notesByDate(text)
     else:
         return printHelp()
