@@ -32,10 +32,10 @@ def cleanText(text):
 
 def printHelp():
     textToReturn = "Available commands:\n"
-    textToReturn += "Ranking [min]: prints occurrences of repeated dream tags. If min is provided, only prints notes tags with min number of occurrences\n"
-    textToReturn += "Filter [list of tags]: searches all dreams that have the provided tags\n"
-    textToReturn += "Read [ID]: prints the note with the provided ID\n"
-    textToReturn += "Date [year] [month] [day]: lists dreams in that year, year+month, year+month+day\n"
+    textToReturn += "/ranking [min]: prints occurrences of repeated dream tags. If min is provided, only prints notes tags with min number of occurrences\n"
+    textToReturn += "/filter [list of tags]: searches all dreams that have the provided tags\n"
+    textToReturn += "/read [ID]: prints the note with the provided ID\n"
+    textToReturn += "/date [year] [month] [day]: lists dreams in that year, year+month, year+month+day\n"
     return textToReturn    
     
 def readConfig():
@@ -158,7 +158,7 @@ def notesByDate(text):
     if numberOfParameters == 1:
         monthsToReturn = []
         for note in notesToReturn:
-            buttonText = str(note.date.year) + "-" + str(note.date.month) + "-x"
+            buttonText = str(note.date.year) + " " + str(note.date.month) + "-x"
             if buttonText not in monthsToReturn:
                 monthsToReturn.append(buttonText)
         for month in monthsToReturn:
@@ -167,7 +167,7 @@ def notesByDate(text):
     if numberOfParameters == 2:
         daysToReturn = []
         for note in notesToReturn:
-            buttonText = str(note.date.year) + "-" + str(note.date.month) + "-" + str(note.date.day)
+            buttonText = str(note.date.year) + " " + str(note.date.month) + " " + str(note.date.day)
             if buttonText not in daysToReturn:
                 daysToReturn.append(buttonText)
         for day in daysToReturn:
