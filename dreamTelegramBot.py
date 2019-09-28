@@ -22,6 +22,7 @@ def renderDate(my_keyboard, line):
         return
     
     result = re.findall(r'^<date>(.*)<\/date>$', line)[0]
+    
     my_keyboard.append([InlineKeyboardButton(text="View dreams in " + result, callback_data="Date " + result)])
     
     return my_keyboard
@@ -67,13 +68,13 @@ def on_chosen_inline_result(msg):
     pass
 
 def processCommand(text):
-    if text.split(" ")[0] == "Ranking":
+    if text.split(" ")[0] == "/ranking" or text.split(" ")[0] == "ranking":
         return tagsRanking(text)        
-    elif text.split(" ")[0] == "Filter":
+    elif text.split(" ")[0] == "/filter" or text.split(" ")[0] == "filter":
         return printByTag(text)
-    elif text.split(" ")[0] == "Read":
+    elif text.split(" ")[0] == "/read" or text.split(" ")[0] == "read":
         return printById(text)
-    elif text.split(" ")[0] == "Date":
+    elif text.split(" ")[0] == "/date" or text.split(" ")[0] == "date":
         return notesByDate(text)
     else:
         return printHelp()
